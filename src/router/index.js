@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import Home from '../components/Home';
 import Admin from '../components/Admin';
 import Login from '../components/Admin/Login';
+import Homepage from '../components/Website/Homepage'
 
 // import admin page components
 import Posts from '../components/Admin/content/Posts';
@@ -66,6 +67,11 @@ export default new Router({
       path: '*',
       name: 'default',
       component: Home
+    },
+    {
+      path: '/homepage',
+      name: 'Homepage',
+      component: Homepage
     }
   ]
 });
