@@ -23,19 +23,19 @@
       <div class="container">
         <ul class="features__list">
           <li class="features__list-item">
-            <img :src="templates" alt="">
+            <img class="features__list-img" :src="templates" alt="">
             <h3>TamiatCMS Templates</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur voluptate, pariatur veritatis
               cum quam soluta sit consequatur vero voluptatibus.</p>
           </li>
           <li class="features__list-item">
-            <img :src="layout" alt="">
+            <img class="features__list-img" :src="layout" alt="">
             <h3>TamiatCMS Templates</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur voluptate, pariatur veritatis
               cum quam soluta sit consequatur vero voluptatibus.</p>
           </li>
           <li class="features__list-item">
-            <img :src="material" alt="">
+            <img class="features__list-img" :src="material" alt="">
             <h3>TamiatCMS Templates</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur voluptate, pariatur veritatis
               cum quam soluta sit consequatur vero voluptatibus.</p>
@@ -55,10 +55,8 @@
           <li>
             <img class="sponsors__logo" :src="placeholder" alt="">
           </li>
-           <li>
-             <a href="" class="btn btn--small btn--white">become a backer <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-          </li>
         </ul>
+            <a href="" class="btn btn--small btn--white">become a backer <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
       </div>
       </section>
 <div class="support">
@@ -202,7 +200,6 @@ $font__footer: #cfd8dc;
   $target) {
   @return (100% * $el) / $target;
 }
-
 // 4. Font Faces
 // 5. Base
 * {
@@ -242,7 +239,6 @@ ul {
   list-style: none;
   padding: 0;
 }
-
 // 6. Layout
 header {
   @extend %flex;
@@ -258,7 +254,7 @@ header {
   align-items: center;
   color: #ffffff;
   font: 400 1.6rem "Roboto", "sans-serif";
-  min-height: 100px;
+  min-height: 90px;
 }
 main {
   background: #ffffff url("../../../static/img/body-background.svg") no-repeat
@@ -280,17 +276,20 @@ footer {
 .header__content {
   @extend %flex;
   flex-direction: column;
+  min-width: 100px;
+  max-width: 500px;
+  width: 100%;
 }
 .features__list-item {
-  margin: 30px 10px 0 10px;
+  margin: 30px 10px 60px 10px;
+}
+.features__list-img {
+  margin-bottom: 10px;
 }
 .sponsors__logo {
   max-width: 500px;
   min-width: 100px;
   width: 100%;
-}
-.sponsors__list li:last-child {
-  margin-top: 40px;
 }
 .btn {
   border-radius: 3px;
@@ -433,26 +432,43 @@ footer {
     flex-direction: row;
   }
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 910px) {
+  .header__content {
+    text-align: left;
+    max-width: 600px;
+    min-width: 200px;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 810px) {
   header {
     flex-flow: row wrap;
-    height: 60vh;
+    height: 70vh;
     justify-content: center;
     align-items: flex-end;
   }
-  .header__content {
-    text-align: left;
-    max-width: 100%;
+  .btn--group {
+    flex-direction: row;
+  }
+  .btn--large {
+    margin-left: 0;
   }
   .homepage__logo {
     max-width: 100%;
-    height: 240px;
-    margin-right: 80px;
+    height: 300px;
+    margin-right: 20px;
     margin-top: -20px;
-
   }
- .btn--group {
-    flex-direction: row;
+}
+@media screen and (min-width: 1000px) {
+  .sponsors__list {
+    display: flex;
+  }
+  .homepage__logo {
+    max-width: 100%;
+    height: 340px;
+    margin-right: 50px;
+    margin-top: -20px;
   }
 }
 @media screen and (min-width: 1100px) {
