@@ -1,5 +1,12 @@
 <template>
   <div id="homepage">
+    <nav>
+      <ul class="nav__menu">
+        <li class="nav__menu-item">Documentation</li>
+        <li class="nav__menu-item">Community</li>
+        <li class="nav__menu-item">Updates</li>
+      </ul>
+    </nav>
     <header>
       <img class="homepage__logo" :src="logoSrc" alt="">
       <div class="header__content">
@@ -68,14 +75,17 @@
         <li><h4>PayPal</h4><img class="support__img" :src="paypal" alt=""></li>
       </ul>
         </div>
-</div>        
+</div> 
+<section class="slogan">    
       <div class="trans--container">
-        <img src="" alt="">
-        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, error!</h2>
+        <img class="slogan__logo" :src="logoSrc" alt="">
+        <h2 class="slogan__content text--white">Lorem ipsum dolor sit amet consectetur</br> adipisicing elit Lorem ipsum dolor sit amet. Cupiditate, error!</h2>
         </div>
+        </section>   
     </main>
 <footer>
   <div class="footer__body">
+    <div class="footer__wrapper">
   <div class="footer__aside">
 <ul>
   <li><img class="footer__logo" :src="logoSrc" alt=""></li>
@@ -92,6 +102,8 @@
   <li class="footer__body-item">PayPal</li>
 </ul>
 </div>
+</div>
+<div class="footer__wrapper">
 <div class="footer__sponsors">
 <ul>
   <li class="footer__body-item">Sponsors</li>
@@ -107,6 +119,7 @@
   <li class="footer__body-item">Material</li>
   <li class="footer__body-item">Design</li>
 </ul>
+</div>
 </div>
 </div>
   <div class="footer__bottom">
@@ -207,6 +220,7 @@ $font__footer: #cfd8dc;
 }
 #homepage {
   font: 400 62.5% "Roboto", sans-serif;
+  overflow-x: hidden;
   background: #ffffff;
   width: 100%;
   min-height: 100vh;
@@ -235,6 +249,10 @@ p {
   font: normal 1rem/26px "Roboto", sans-serif;
   color: $p__font;
 }
+a {
+text-decoration: none;
+
+}
 ul {
   list-style: none;
   padding: 0;
@@ -256,10 +274,19 @@ header {
   font: 400 1.6rem "Roboto", "sans-serif";
   min-height: 90px;
 }
+nav {
+  min-height: 50px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .6);
+  background: $white;
+  position: fixed;
+  z-index: 1;
+}
 main {
-  background: #ffffff url("../../../static/img/body-background.svg") no-repeat
-    top;
-  background-size: cover;
+  background:  url("../../../static/img/body-background.svg") no-repeat top,
+     url("../../../static/img/background-repeat.svg") repeat 100%;
+    //  url("../../../static/img/background-footer.svg") no-repeat bottom;
+  background-size: 100% 100% 100%;
 }
 footer {
   @extend %flex;
@@ -270,7 +297,7 @@ footer {
 // 7. Block + element
 .homepage__logo {
   max-width: 100px;
-  margin-top: 60px;
+  margin-top: 100px;
   filter: blur(2px);
 }
 .header__content {
@@ -279,6 +306,20 @@ footer {
   min-width: 100px;
   max-width: 500px;
   width: 100%;
+}
+.nav__menu {
+  display: flex;
+  margin: 0 30px 0 auto;
+  max-width: 300px;
+  justify-content: space-between;
+}
+.nav__menu-item {
+  font: 300 1rem 'Roboto', sans-serif;
+  display: block;
+  padding: 5px 10px;
+  color: $h2__font;
+  line-height: 50px;
+  @extend %pointer;
 }
 .features__list-item {
   margin: 30px 10px 60px 10px;
@@ -317,6 +358,22 @@ footer {
   @extend %flex;
   flex-direction: column;
   justify-content: center;
+}
+.slogan__content {
+  font: 300 2rem/3rem 'Roboto', sans-serif;
+  text-align: left;
+}
+.slogan__logo {
+  max-width: 100px;
+  display: block;
+  filter: blur(2px);
+}
+.footer__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  min-height: 300px;
 }
 .footer__logo {
   filter: blur(2px);
@@ -377,7 +434,7 @@ footer {
   margin: 0 auto;
   width: 90%;
   border-radius: 4px;
-  padding: 0 40px 40px 40px;
+  padding: 40px 40px 40px 40px;
 }
 .btn--group {
   @extend %flex;
@@ -412,6 +469,23 @@ footer {
   color: $white;
 }
 // 9. State
+// CORRECT LINKS //
+a:link {
+text-decoration: none;
+
+}
+a:visited {
+text-decoration: none;
+color: $font__footer;
+}
+a:hover {
+text-decoration: none;
+
+}
+a:active {
+text-decoration: none;
+color: $main__color;
+}
 .btn--blue:hover {
   background: lighten($main__color, 10%);
 }
@@ -422,6 +496,10 @@ footer {
   margin-right: 10px;
   font-size: 2rem;
 }
+.nav__menu-item:hover {
+  background: #f2f2f2;
+  @extend %transition;
+}
 // 10. Animations
 // 11. Media Queries
 @media screen and (min-width: 445px) {
@@ -430,6 +508,15 @@ footer {
   }
   .support__brands {
     flex-direction: row;
+  }
+  .footer__wrapper {
+    min-height: 440px;
+  }
+}
+@media screen and (min-width: 650px) {
+  .footer__wrapper {
+    flex-direction: row;
+    min-height: 210px;
   }
 }
 @media screen and (min-width: 910px) {
