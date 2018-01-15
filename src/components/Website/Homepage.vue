@@ -17,7 +17,7 @@
       <h2>{{subheader}}</h2>
       <div class="btn--group">
       <a class="btn btn--large btn--blue" href="">documentation</a>
-      <a class="btn btn--large btn--white" href="">
+      <a class="btn btn--large btn--white" href="https://github.com/tamiat/tamiat">
         <i class="btn--icon fa fa-github" aria-hidden="true"></i>Github</a>
         </div>
         </div>
@@ -25,7 +25,7 @@
     <section class="releases">
       <p class="text--white">v 1.0 beta has been released!
         <a href="" class="btn btn--small btn--white">1.0 docs</a>
-        <a href="" class="btn btn--small btn--white">learn more</a>
+        <a href="https://github.com/tamiat/tamiat" class="btn btn--small btn--white">learn more</a>
       </p>
     </section>
     <main>
@@ -74,7 +74,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, numquam!</p>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, assumenda?</p>
       <ul class="support__brands">
-        <li><h4>Patreon</h4><img class="support__img" :src="patreon" alt=""></li>
+        <li><a href="https://www.patreon.com/tamiatcms"><h4>Patreon</h4></a><a href="https://www.patreon.com/tamiatcms"><img class="support__img" :src="patreon" alt=""></a></li>
         <li><h4>PayPal</h4><img class="support__img" :src="paypal" alt=""></li>
       </ul>
         </div>
@@ -93,7 +93,7 @@
 <ul>
   <li><img class="footer__logo" :src="logoSrc" alt=""></li>
   <li class="footer__body-item">Documentation</li>
-  <li class="footer__body-item"> <i class="btn--icon fa fa-github" aria-hidden="true"></i> GitHub</li>
+  <li class="footer__body-item"> <i class="btn--icon fa fa-github" aria-hidden="true"></i><a href="https://github.com/tamiat/tamiat">GitHub</a></li>
   <li class="footer__body-item"> <i class="btn--icon fa fa-twitter" aria-hidden="true"></i>Twitter</li>
   <li class="footer__body-item"> <i class="btn--icon fa fa-facebook" aria-hidden="true"></i>Facebook</li>
 </ul>
@@ -101,7 +101,7 @@
   <div class="footer__donate">
 <ul>
   <li class="footer__body-item">Donate</li>
-  <li class="footer__body-item">Patreon</li>
+  <li class="footer__body-item"><a href="https://www.patreon.com/tamiatcms">Patreon</a></li>
   <li class="footer__body-item">PayPal</li>
 </ul>
 </div>
@@ -158,7 +158,6 @@ export default {
   created() {
     window.addEventListener("scroll", this.showHideMenu);
     window.addEventListener("resize", this.showDesktopMenu);
-    window.matchMedia();
     if (window.matchMedia("(min-width: 445px)").matches) {
       this.mobileMenu = true;
     } else {
@@ -472,7 +471,7 @@ footer {
   width: 90%;
   background: $white;
   border-radius: 4px;
-  padding: 40px;
+  padding: 2%;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
 }
@@ -480,7 +479,7 @@ footer {
   margin: 0 auto;
   width: 90%;
   border-radius: 4px;
-  padding: 40px 40px 40px 40px;
+  padding: 2%;
 }
 .btn--group {
   @extend %flex;
@@ -495,10 +494,10 @@ footer {
 }
 .btn--small {
   height: 44px;
-  min-width: 100px;
+  
   display: inline-block;
   line-height: 44px;
-  margin: 10px 10px;
+  margin: 10px 1%;
 }
 .btn--blue {
   background-color: $main__color;
@@ -557,9 +556,18 @@ a:active {
   @extend %transition;
 }
 // 11. Media Queries
+@media screen and (max-width: 445px){
+
+}
 @media screen and (min-width: 445px) {
   .footer__body {
     flex-wrap: nowrap;
+  }
+  .container {
+    padding: 40px;
+  }
+  .trans--container {
+    padding: 40px;
   }
   .nav__menu {
     display: flex;
@@ -592,14 +600,6 @@ a:active {
     min-height: 210px;
   }
 }
-@media screen and (min-width: 910px) {
-  .header__content {
-    text-align: left;
-    max-width: 600px;
-    min-width: 200px;
-    width: 100%;
-  }
-}
 @media screen and (min-width: 810px) {
   header {
     flex-flow: row wrap;
@@ -619,6 +619,14 @@ a:active {
     height: 300px;
     margin-right: 20px;
     margin-top: -20px;
+  }
+}
+@media screen and (min-width: 910px) {
+  .header__content {
+    text-align: left;
+    max-width: 600px;
+    min-width: 200px;
+    width: 100%;
   }
 }
 @media screen and (min-width: 1000px) {
