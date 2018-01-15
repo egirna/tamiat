@@ -494,7 +494,6 @@ footer {
 }
 .btn--small {
   height: 44px;
-  
   display: inline-block;
   line-height: 44px;
   margin: 10px 1%;
@@ -511,6 +510,7 @@ footer {
 }
 .text--white {
   color: $white;
+  width: 100%;
 }
 // 9. State
 // CORRECT LINKS //
