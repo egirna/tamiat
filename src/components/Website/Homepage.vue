@@ -1,12 +1,15 @@
 <template>
   <div id="homepage">
-    <nav>
+    <transition name="fade">
+    <nav v-if="menu">
       <ul class="nav__menu">
-        <li class="nav__menu-item">Documentation</li>
-        <li class="nav__menu-item">Community</li>
-        <li class="nav__menu-item">Updates</li>
+        <li v-if="mobileMenu" class="nav__menu-item">Documentation</li>
+        <li v-if="mobileMenu" class="nav__menu-item">Community</li>
+        <li v-if="mobileMenu" class="nav__menu-item">Updates</li>
+        <li @click="toggleMenu" class="nav__menu-item"><i class="fa fa-bars" aria-hidden="true"></i></li>
       </ul>
     </nav>
+    </transition>
     <header>
       <img class="homepage__logo" :src="logoSrc" alt="">
       <div class="header__content">
@@ -147,8 +150,36 @@ export default {
       patreon: "../../static/img/patreon.png",
       paypal: "../../static/img/paypal.png",
       github: "../../../static/img/GitHub.png",
-      placeholder: "../../../static/img/placeholder.svg"
+      placeholder: "../../../static/img/placeholder.svg",
+      menu: false,
+      mobileMenu: true
     };
+  },
+  created() {
+    window.addEventListener("scroll", this.showHideMenu);
+    window.addEventListener("resize", this.showDesktopMenu);
+    window.matchMedia();
+    if (window.matchMedia("(min-width: 445px)").matches) {
+      this.mobileMenu = true;
+    } else {
+      this.mobileMenu = false;
+    }
+   
+  },
+  methods: {
+    showHideMenu() {
+      window.scrollY > 250 ? (this.menu = true) : (this.menu = false);
+    },
+    toggleMenu() {
+      this.mobileMenu = !this.mobileMenu;
+    },
+    showDesktopMenu() {
+      if (window.matchMedia("(min-width: 445px)").matches) {
+      this.mobileMenu = true;
+    } else {
+      this.mobileMenu = false;
+    }
+    }
   }
 };
 </script>
@@ -174,6 +205,8 @@ Table of contents
 
 // 1. Variables
 $main__color: #2196f3;
+
+$active__color: #14ffe3;
 
 $white: #ffffff;
 
@@ -250,8 +283,7 @@ p {
   color: $p__font;
 }
 a {
-text-decoration: none;
-
+  text-decoration: none;
 }
 ul {
   list-style: none;
@@ -277,15 +309,15 @@ header {
 nav {
   min-height: 50px;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   background: $white;
   position: fixed;
   z-index: 1;
 }
 main {
-  background:  url("../../../static/img/body-background.svg") no-repeat top,
-     url("../../../static/img/background-repeat.svg") repeat 100%;
-    //  url("../../../static/img/background-footer.svg") no-repeat bottom;
+  background: url("../../../static/img/body-background.svg") no-repeat top,
+    url("../../../static/img/background-repeat.svg") repeat 100%;
+  // url("../../../static/img/background-footer.svg") no-repeat bottom;
   background-size: 100% 100% 100%;
 }
 footer {
@@ -309,16 +341,30 @@ footer {
 }
 .nav__menu {
   display: flex;
-  margin: 0 30px 0 auto;
+  margin: 0 50px 0 auto;
   max-width: 300px;
-  justify-content: space-between;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-bottom: 10px;
 }
 .nav__menu-item {
-  font: 300 1rem 'Roboto', sans-serif;
+  display: block;
+  font: 300 1.5rem "Roboto", sans-serif;
   display: block;
   padding: 5px 10px;
+  margin-right: -40px;
   color: $h2__font;
+}
+.nav__menu-item:not(:last-child) {
+  width: 100%;
+  text-align: left;
+  padding: 8px 3%;
+  @extend %pointer;
+}
+.nav__menu-item:last-child {
+  margin-left: auto;
   line-height: 50px;
+  order: -1;
   @extend %pointer;
 }
 .features__list-item {
@@ -360,7 +406,7 @@ footer {
   justify-content: center;
 }
 .slogan__content {
-  font: 300 2rem/3rem 'Roboto', sans-serif;
+  font: 300 2rem/3rem "Roboto", sans-serif;
   text-align: left;
 }
 .slogan__logo {
@@ -444,7 +490,6 @@ footer {
 .btn--large {
   height: 44px;
   min-width: 88px;
-  width: 100%;
   margin: 20px 2%;
   @extend %flex;
 }
@@ -471,20 +516,18 @@ footer {
 // 9. State
 // CORRECT LINKS //
 a:link {
-text-decoration: none;
-
+  text-decoration: none;
 }
 a:visited {
-text-decoration: none;
-color: $font__footer;
+  text-decoration: none;
+  color: $font__footer;
 }
 a:hover {
-text-decoration: none;
-
+  text-decoration: none;
 }
 a:active {
-text-decoration: none;
-color: $main__color;
+  text-decoration: none;
+  color: lighten($active__color, 20%);
 }
 .btn--blue:hover {
   background: lighten($main__color, 10%);
@@ -501,10 +544,40 @@ color: $main__color;
   @extend %transition;
 }
 // 10. Animations
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+.fade-enter-active,
+.fade-leave-active {
+  @extend %transition;
+}
 // 11. Media Queries
 @media screen and (min-width: 445px) {
   .footer__body {
     flex-wrap: nowrap;
+  }
+  .nav__menu {
+    display: flex;
+    flex-direction: row;
+    margin: 0 70px 0 auto;
+    max-width: 300px;
+    padding: 0;
+    justify-content: space-between;
+  }
+  .nav__menu-item:not(:last-child) {
+    font: 300 1rem/70px "Roboto", sans-serif;
+    padding: 5px 10px;
+    width: auto;
+    color: $h2__font;
+    cursor: pointer;
+  }
+  .nav__menu-item:last-child {
+    display: none;
   }
   .support__brands {
     flex-direction: row;
@@ -539,6 +612,7 @@ color: $main__color;
   }
   .btn--large {
     margin-left: 0;
+    width: 100%;
   }
   .homepage__logo {
     max-width: 100%;
