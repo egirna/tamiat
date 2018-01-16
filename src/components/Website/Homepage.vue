@@ -69,20 +69,20 @@
             <a href="" class="btn btn--small btn--white">become a backer <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
       </div>
       </section>
-<div class="support">
+<section class="support">
       <div class="container">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, numquam!</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, assumenda?</p>
+        <p class="support__description">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+        <p class="support__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, assumenda?</p>
       <ul class="support__brands">
         <li><a href="https://www.patreon.com/tamiatcms"><h4>Patreon</h4></a><a href="https://www.patreon.com/tamiatcms"><img class="support__img" :src="patreon" alt=""></a></li>
         <li><h4>PayPal</h4><img class="support__img" :src="paypal" alt=""></li>
       </ul>
         </div>
-</div> 
+</section> 
 <section class="slogan">    
       <div class="trans--container">
         <img class="slogan__logo" :src="logoSrc" alt="">
-        <h2 class="slogan__content text--white">Lorem ipsum dolor sit amet consectetur</br> adipisicing elit Lorem ipsum dolor sit amet. Cupiditate, error!</h2>
+        <h2 class="slogan__content text--white">Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet. Cupiditate, error!</h2>
         </div>
         </section>   
     </main>
@@ -157,27 +157,35 @@ export default {
   },
   created() {
     window.addEventListener("scroll", this.showHideMenu);
+    window.addEventListener("resize", this.showHideMenu);
+    this.showHideMenu();
     window.addEventListener("resize", this.showDesktopMenu);
     if (window.matchMedia("(min-width: 445px)").matches) {
       this.mobileMenu = true;
     } else {
       this.mobileMenu = false;
     }
-   
   },
   methods: {
     showHideMenu() {
-      window.scrollY > 250 ? (this.menu = true) : (this.menu = false);
+      if (window.matchMedia("(max-width: 445px)").matches) {
+        this.menu = true;
+      } else {
+        this.menu = false;
+      }
+      if (window.matchMedia("(min-width: 446px)").matches) {
+        window.scrollY > 250 ? (this.menu = true) : (this.menu = false);
+      }
     },
     toggleMenu() {
       this.mobileMenu = !this.mobileMenu;
     },
     showDesktopMenu() {
       if (window.matchMedia("(min-width: 445px)").matches) {
-      this.mobileMenu = true;
-    } else {
-      this.mobileMenu = false;
-    }
+        this.mobileMenu = true;
+      } else {
+        this.mobileMenu = false;
+      }
     }
   }
 };
@@ -259,7 +267,7 @@ $font__footer: #cfd8dc;
   @extend %text--center;
 }
 h1 {
-  font: 400 3rem/3.6rem "Roboto", sans-serif;
+  font: 400 2.6rem/2.6rem "Roboto", sans-serif;
   color: $main__color;
   padding-top: 30px;
   margin: 0;
@@ -295,16 +303,6 @@ header {
   align-items: center;
   padding-bottom: 30px;
 }
-.releases {
-  background: $main__color;
-  display: flex;
-  padding: 0 2%;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  font: 400 1.6rem "Roboto", "sans-serif";
-  min-height: 90px;
-}
 nav {
   min-height: 50px;
   width: 100%;
@@ -312,6 +310,16 @@ nav {
   background: $white;
   position: fixed;
   z-index: 1;
+}
+.releases {
+  background: $main__color;
+  display: flex;
+  padding: 0 2%;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font: 400 1.6rem "Roboto", sans-serif;
+  min-height: 90px;
 }
 main {
   background: url("../../../static/img/body-background.svg") no-repeat top,
@@ -380,7 +388,7 @@ footer {
 .btn {
   border-radius: 3px;
   height: 36px;
-  font: 700 0.9rem "Roboto", "sans-serif";
+  font: 700 0.9rem "Roboto", sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
@@ -395,6 +403,11 @@ footer {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
+.support__description {
+  font: 300 1.3rem/1.7rem "Roboto", sans-serif;
+  color: h2__font;
+  margin: 10px;
+}
 .support__img {
   width: 125px;
   margin: 5px 10px;
@@ -405,13 +418,16 @@ footer {
   justify-content: center;
 }
 .slogan__content {
-  font: 300 2rem/3rem "Roboto", sans-serif;
-  text-align: left;
+  font: 400 1.4rem/2.3rem "Roboto", sans-serif;
+  text-align: center;
+  max-width: 900px;
+  padding-bottom: 30px;
 }
 .slogan__logo {
   max-width: 100px;
   display: block;
   filter: blur(2px);
+  margin: 0 auto;
 }
 .footer__wrapper {
   display: flex;
@@ -471,7 +487,7 @@ footer {
   width: 90%;
   background: $white;
   border-radius: 4px;
-  padding: 2%;
+  padding: 20px 2% 20px 2%;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
 }
@@ -479,7 +495,7 @@ footer {
   margin: 0 auto;
   width: 90%;
   border-radius: 4px;
-  padding: 2%;
+  padding: 2% 2% 40px 2%;
 }
 .btn--group {
   @extend %flex;
@@ -556,8 +572,25 @@ a:active {
   @extend %transition;
 }
 // 11. Media Queries
-@media screen and (max-width: 445px){
-
+@media screen and (min-width: 275px) {
+  h1 {
+    font: 400 3rem/3.6rem "Roboto", sans-serif;
+  }
+  .support__description {
+    font: 300 1.3rem/2rem "Roboto", sans-serif;
+  }
+}
+@media screen and (min-width: 580px) {
+  .slogan__content {
+    font: 300 2.1rem/3rem "Roboto", sans-serif;
+    text-align: left;
+  }
+  .trans--container {
+    padding: 2%;
+  }
+  .slogan__logo {
+    margin: 0 auto 0 0;
+  }
 }
 @media screen and (min-width: 445px) {
   .footer__body {
@@ -603,9 +636,12 @@ a:active {
 @media screen and (min-width: 810px) {
   header {
     flex-flow: row wrap;
-    height: 70vh;
+    height: 450px;
     justify-content: center;
     align-items: flex-end;
+  }
+  .support__description {
+    font: 300 2rem/2.8rem "Roboto", sans-serif;
   }
   .btn--group {
     flex-direction: row;
@@ -632,6 +668,7 @@ a:active {
 @media screen and (min-width: 1000px) {
   .sponsors__list {
     display: flex;
+    padding: 30px 0 20px 0;
   }
   .homepage__logo {
     max-width: 100%;
@@ -643,6 +680,30 @@ a:active {
 @media screen and (min-width: 1100px) {
   .features__list {
     display: flex;
+  }
+}
+@media screen and (min-width: 2560px) {
+  header {
+    height: 650px;
+    h2 {
+      font: 300 2.2rem/2.5rem "Roboto", sans-serif;
+      padding-left: 15px;
+    }
+  }
+  .homepage__logo {
+    height: 500px;
+    margin-top: 100px;
+    filter: blur(2px);
+  }
+  h1 {
+    font: 400 6rem/4.6rem "Roboto", sans-serif;
+    text-align: left;
+  }
+  .btn--large {
+    height: 60px;
+    min-width: 488px;
+    margin: 20px 2%;
+    font: 500 1.5rem/2.3rem "Roboto", sans-serif;
   }
 }
 </style>
