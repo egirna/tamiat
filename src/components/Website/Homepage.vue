@@ -236,6 +236,8 @@ $font__footer: #cfd8dc;
 }
 
 %flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -244,6 +246,7 @@ $font__footer: #cfd8dc;
 }
 
 %transition {
+  -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
 
@@ -256,7 +259,8 @@ $font__footer: #cfd8dc;
 // 4. Font Faces
 // 5. Base
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 #homepage {
   font: 400 62.5% "Roboto", sans-serif;
@@ -299,24 +303,36 @@ ul {
 // 6. Layout
 header {
   @extend %flex;
-  flex-flow: column wrap;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-bottom: 30px;
 }
 nav {
   min-height: 50px;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   background: $white;
   position: fixed;
   z-index: 1;
 }
 .releases {
   background: $main__color;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 2%;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #ffffff;
   font: 400 1.6rem "Roboto", sans-serif;
   min-height: 90px;
@@ -329,7 +345,10 @@ main {
 }
 footer {
   @extend %flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   font: 400 1rem "Roboto", sans-serif;
   color: $font__footer;
 }
@@ -337,21 +356,32 @@ footer {
 .homepage__logo {
   max-width: 100px;
   margin-top: 100px;
-  filter: blur(2px);
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
 }
 .header__content {
   @extend %flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   min-width: 100px;
   max-width: 500px;
   width: 100%;
 }
 .nav__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 0 50px 0 auto;
   max-width: 300px;
-  justify-content: flex-end;
-  flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding-bottom: 10px;
 }
 .nav__menu-item {
@@ -371,7 +401,9 @@ footer {
 .nav__menu-item:last-child {
   margin-left: auto;
   line-height: 50px;
-  order: -1;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
   @extend %pointer;
 }
 .features__list-item {
@@ -391,16 +423,27 @@ footer {
   font: 700 0.9rem "Roboto", sans-serif;
   text-transform: uppercase;
   text-decoration: none;
+  -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1), color 1ms;
   vertical-align: middle;
-  user-select: none;
-  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 0 16px;
+  -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   white-space: nowrap;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 .support__description {
@@ -414,8 +457,13 @@ footer {
 }
 .support__brands {
   @extend %flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .slogan__content {
   font: 400 1.4rem/2.3rem "Roboto", sans-serif;
@@ -426,18 +474,26 @@ footer {
 .slogan__logo {
   max-width: 100px;
   display: block;
-  filter: blur(2px);
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
   margin: 0 auto;
 }
 .footer__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   min-height: 300px;
 }
 .footer__logo {
-  filter: blur(2px);
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
   max-width: 50px;
   height: auto;
   margin-bottom: 10px;
@@ -447,8 +503,11 @@ footer {
 }
 .footer__body {
   @extend %flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .footer__body-item {
   padding-bottom: 3px;
@@ -460,22 +519,30 @@ footer {
 }
 .footer__aside {
   background: $aside__footer;
-  flex: 1 1 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
   padding: 10px 4%;
 }
 .footer__donate {
   background: $main__footer;
-  flex: 1 1 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
   padding: 10px 4%;
 }
 .footer__sponsors {
   background: $main__footer;
-  flex: 1 1 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
   padding: 10px 4%;
 }
 .footer__links {
   background: $main__footer;
-  flex: 1 1 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
   padding: 10px 4%;
 }
 .footer__bottom {
@@ -488,7 +555,9 @@ footer {
   background: $white;
   border-radius: 4px;
   padding: 20px 2% 20px 2%;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
+          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
 }
 .trans--container {
@@ -499,8 +568,13 @@ footer {
 }
 .btn--group {
   @extend %flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .btn--large {
   height: 44px;
@@ -594,7 +668,8 @@ a:active {
 }
 @media screen and (min-width: 445px) {
   .footer__body {
-    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
   }
   .container {
     padding: 40px;
@@ -603,12 +678,19 @@ a:active {
     padding: 40px;
   }
   .nav__menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     margin: 0 70px 0 auto;
     max-width: 300px;
     padding: 0;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   .nav__menu-item:not(:last-child) {
     font: 300 1rem/70px "Roboto", sans-serif;
@@ -621,7 +703,10 @@ a:active {
     display: none;
   }
   .support__brands {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
   .footer__wrapper {
     min-height: 440px;
@@ -629,22 +714,35 @@ a:active {
 }
 @media screen and (min-width: 650px) {
   .footer__wrapper {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     min-height: 210px;
   }
 }
 @media screen and (min-width: 810px) {
   header {
-    flex-flow: row wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
     height: 450px;
-    justify-content: center;
-    align-items: flex-end;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
   }
   .support__description {
     font: 300 2rem/2.8rem "Roboto", sans-serif;
   }
   .btn--group {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
   .btn--large {
     margin-left: 0;
@@ -667,6 +765,8 @@ a:active {
 }
 @media screen and (min-width: 1000px) {
   .sponsors__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding: 30px 0 20px 0;
   }
@@ -679,6 +779,8 @@ a:active {
 }
 @media screen and (min-width: 1100px) {
   .features__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 }
@@ -693,7 +795,8 @@ a:active {
   .homepage__logo {
     height: 500px;
     margin-top: 100px;
-    filter: blur(2px);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
   }
   h1 {
     font: 400 6rem/4.6rem "Roboto", sans-serif;
