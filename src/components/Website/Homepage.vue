@@ -10,7 +10,8 @@
       </ul>
     </nav>
     </transition>
-    <header>
+<!-- HEADER -->
+      <div class="header">
       <img class="homepage__logo" :src="logoSrc" alt="">
       <div class="header__content">
       <h1>{{logo}}</h1>
@@ -21,15 +22,20 @@
         <i class="btn--icon fa fa-github" aria-hidden="true"></i>Github</a>
         </div>
         </div>
-    </header>
-    <section class="releases">
+        </div>
+<!-- HEADER -->
+<!-- SECTION RELEASES -->
+    <div class="releases">
       <p class="text--white">v 1.0 beta has been released!
         <a href="" class="btn btn--small btn--white">1.0 docs</a>
         <a href="https://github.com/tamiat/tamiat" class="btn btn--small btn--white">learn more</a>
       </p>
-    </section>
+    </div>
+<!-- SECTION RELEASES -->
+
     <main>
-       <section class="features">
+<!-- SECTION FEATURES -->
+       <div class="features">
       <div class="container">
         <ul class="features__list">
           <li class="features__list-item">
@@ -52,8 +58,10 @@
           </li>
         </ul>
       </div>
-        </section>
-   <section class="sponsors">
+        </div>
+<!-- SECTION FEATURES -->
+<!-- SECTION SPONSORS -->
+   <div class="sponsors">
        <div class="container">
         <ul class="sponsors__list">
           <li>
@@ -68,8 +76,10 @@
         </ul>
             <a href="" class="btn btn--small btn--white">become a backer <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
       </div>
-      </section>
-<section class="support">
+      </div>
+<!-- SECTION SPONSORS -->
+<!-- SECTION SUPPORT -->
+<div class="support">
       <div class="container">
         <p class="support__description">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
         <p class="support__description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, assumenda?</p>
@@ -78,15 +88,19 @@
         <li><h4>PayPal</h4><img class="support__img" :src="paypal" alt=""></li>
       </ul>
         </div>
-</section> 
-<section class="slogan">    
+</div> 
+<!-- SECTION SUPPORT -->
+<!-- SECTION SLOGAN -->
+<div class="slogan">    
       <div class="trans--container">
         <img class="slogan__logo" :src="logoSrc" alt="">
         <h2 class="slogan__content text--white">Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet. Cupiditate, error!</h2>
         </div>
-        </section>   
+        </div>   
+<!-- SECTION SLOGAN -->
     </main>
-<footer>
+<!-- FOOTER -->
+<div class="footer">
   <div class="footer__body">
     <div class="footer__wrapper">
   <div class="footer__aside">
@@ -128,8 +142,8 @@
   <div class="footer__bottom">
    <p class="text--white"> &copy; 2018 TamiatCMS under the MIT License</p>
   </div>
-</footer>
-
+</div>
+<!-- FOOTER -->
   </div>
 </template>
 
@@ -301,7 +315,7 @@ ul {
   padding: 0;
 }
 // 6. Layout
-header {
+.header {
   @extend %flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -343,7 +357,7 @@ main {
   // url("../../../static/img/background-footer.svg") no-repeat bottom;
   background-size: 100% 100% 100%;
 }
-footer {
+.footer {
   @extend %flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -351,6 +365,9 @@ footer {
           flex-direction: column;
   font: 400 1rem "Roboto", sans-serif;
   color: $font__footer;
+  a {
+    color: $font__footer;
+  }
 }
 // 7. Block + element
 .homepage__logo {
@@ -722,7 +739,7 @@ a:active {
   }
 }
 @media screen and (min-width: 810px) {
-  header {
+  .header {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
@@ -785,7 +802,7 @@ a:active {
   }
 }
 @media screen and (min-width: 2560px) {
-  header {
+  .header {
     height: 650px;
     h2 {
       font: 300 2.2rem/2.5rem "Roboto", sans-serif;
