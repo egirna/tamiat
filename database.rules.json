@@ -2,56 +2,25 @@
   "rules": {
     ".write": "auth.uid === 'YOURID'",    
     ".read": true,
-    "posts": {
-      "$id": {
-        "author": {
-          ".validate": "newData.isString()"
-        },
-        "body": {
-          ".validate": "newData.isString()"
-        },
-        "tags": {
-          ".validate": "newData.hasChildren()"
-        },
-        "title": {
-          ".validate": "newData.isString()"
-        },
-        "img": {
-          ".validate": "newData.isString()"
-        },
-        "created": {
-          // ".validate": "newData.val() < now"
-        },
-        "$other": {
-          ".validate": false
-        }
-      }
-    },
     "settings": {
       ".validate": true
-    },
-    "pages": {
-      "$id": {
-        "name": {
-          ".validate": "newData.isString()"
-        },
-        "fields": {
-          ".validate": true
-        },
-        "$other": {
-          ".validate": false
-        }
-      }
-    },
-    "users": {
-      "$uid": {
-        // ".write": "auth != null && auth.uid == $uid && root.child('users').child(auth.uid).child('role').val() === 'admin' "
-      }
     },
     "media": {
       "$id": {
         // ".write": "auth != null && auth.uid == $uid && root.child('users').child(auth.uid).child('role').val() === 'admin' "
       }
+    },
+    "nav": {
+      ".validate": true
+    },
+    "fields": {
+      ".validate": true
+    },
+    "contents": {
+      ".validate": true
+    },
+    "routes": {
+      ".validate": true
     },
     "$other": {
       ".validate": false

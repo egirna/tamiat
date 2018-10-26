@@ -1,33 +1,25 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app'
-};
-
-</script>
-
-<style lang="sass">
-
+<style lang="scss">
 html,
 body,
-#app,
-.admin
-  background-color: #F1F1F1
-  height: 100%
-  width: 100%
-  margin: 0px
-  padding: 0px
-
-
-.bulma
-  @import "../node_modules/bulma/bulma"
-  *
-  box-sizing: border-box
-
-
+#admin {
+  font-family: sans-serif;
+  background-color: #f1f1f1;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  .bulma {
+    // We are not changing anything currently. If need to customize then import bulma saas.
+    @import '../node_modules/bulma/css/bulma.css';
+    * {
+      box-sizing: border-box;
+    }
+  }
+}
 </style>

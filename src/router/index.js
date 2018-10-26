@@ -1,22 +1,25 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
+<<<<<<< HEAD
 // import app pages 
 import Home from '../components/Home';
 import Admin from '../components/Admin';
 import Login from '../components/Admin/Login';
 import Homepage from '../components/Website/Homepage'
+=======
+import routes from './routes'
+import dynamicRoutes from './dynamic-routes'
+>>>>>>> 9f59576068808695280049ce77513510c921f31d
 
-// import admin page components
-import Posts from '../components/Admin/content/Posts';
-import PostNew from '../components/Admin/content/PostNew';
-import PostEdit from '../components/Admin/content/PostEdit';
-import Settings from '../components/Admin/content/Settings';
-import Pages from '../components/Admin/content/Pages';
-import Media from '../components/Admin/content/Media';
+Vue.use(Router)
 
-Vue.use(Router);
+let router = new Router({
+  mode: 'history',
+  routes
+})
 
+<<<<<<< HEAD
 export default new Router({
   mode: "history",
   routes: [
@@ -75,3 +78,8 @@ export default new Router({
     }
   ]
 });
+=======
+dynamicRoutes.addDynamicRoutesTo(router)
+
+export default router
+>>>>>>> 9f59576068808695280049ce77513510c921f31d
